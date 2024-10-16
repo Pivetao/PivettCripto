@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pivetão - Criptomoeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://i.imgur.com/hjypcul.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .header {
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            background: rgba(51, 51, 51, 0.8);
+            border-bottom: 2px solid #4CAF50;
+        }
+        h1 {
+            margin: 0;
+            font-size: 4em;
+            color: #4CAF50;
+            text-shadow: 2px 2px #000;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #45a049;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .about {
+            background: rgba(34, 34, 34, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .about h2 {
+            margin-bottom: 10px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .feature {
+            background: rgba(34, 34, 34, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33% - 40px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: scale(1.05);
+        }
+        .feature h3 {
+            color: #4CAF50;
+        }
+        .contact-form {
+            background-color: rgba(34, 34, 34, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+        .contact-form h2 {
+            margin-top: 0;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            transition: border 0.3s;
+            resize: none; /* Impede o redimensionamento do textarea */
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #45a049;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: rgba(17, 17, 17, 0.8);
+            text-align: center;
+            width: 100%;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #4CAF50;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .feature {
+                width: calc(100% - 40px);
+            }
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.imgur.com/1cykWg1.png" alt="Logo Pivetão" style="width: 150px; height: auto;">
+        <h1>Pivetão</h1>
+        <div class="nav">
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <button class="button" id="connectButton">Conectar MetaMask</button>
+    </div>
+
+    <div class="container">
+        <div class="about" id="sobre">
+            <h2>Sobre o Pivetão</h2>
+            <p>A Pivetão é uma criptomoeda inovadora que busca revolucionar o mercado, oferecendo transações seguras e rápidas, além de um suporte ao usuário excepcional.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Segurança</h3>
+                <p>A Pivetão utiliza as melhores práticas de segurança para proteger seus ativos e dados.</p>
+            </div>
+            <div class="feature">
+                <h3>Transações Rápidas</h3>
+                <p>Com tecnologia avançada, as transações são processadas rapidamente, garantindo eficiência.</p>
+            </div>
+            <div class="feature">
+                <h3>Suporte ao Usuário</h3>
+                <p>Nosso time de suporte está disponível para ajudá-lo em qualquer dúvida ou necessidade.</p>
+            </div>
+        </div>
+
+        <div class="contact-form" id="contato">
+            <h2>Contato</h2>
+            <form id="contactForm">
+                <input type="text" name="nome" placeholder="Seu nome" required>
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <textarea name="mensagem" placeholder="Sua mensagem" required rows="4"></textarea>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Pivetão. Todos os direitos reservados. | <a href="https://bscscan.com/token/0x34Dcad4d57503F8Dc1e23f5C4d67029eFC922545" target="_blank">Ver contrato no BscScan</a></p>
+    </div>
+
+    <script>
+        const connectWallet = async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log(`Conta: ${accounts[0]}`);
+                Swal.fire('Sucesso', `Conectado à conta: ${accounts[0]}`);
+            } else {
+                Swal.fire('Erro', 'MetaMask não está instalada.', 'error');
+            }
+        };
+
+        document.getElementById('connectButton').onclick = connectWallet;
+
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const mensagem = `Nome: ${formData.get('nome')}\nE-mail: ${formData.get('email')}\nMensagem: ${formData.get('mensagem')}`;
+            Swal.fire('Mensagem Enviada', mensagem, 'success');
+            this.reset();
+        };
+    </script>
+</body>
+</html>
